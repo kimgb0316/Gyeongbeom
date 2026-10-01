@@ -3,127 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gyeongbeom Kim | Researcher</title>
+    <title>Gyeongbeom Kim | Academic Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2563eb; --text: #1f2937; --bg: #ffffff; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        header { text-align: center; margin-bottom: 50px; }
+        :root { --primary: #1a56db; --secondary: #64748b; --text: #1e293b; --bg: #ffffff; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; scroll-behavior: smooth; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         
-        /* 사진 스타일 - 깨짐 방지를 위해 alt 텍스트 스타일 추가 */
-        .profile-img { 
-            width: 160px; height: 160px; 
-            border-radius: 50%; object-fit: cover; 
-            margin-bottom: 20px; border: 4px solid #f3f4f6;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            background-color: #f3f4f6; /* 사진 안 나올 때 배경색 */
-        }
+        header { text-align: center; margin-bottom: 60px; }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; border: 5px solid #f1f5f9; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        h1 { font-size: 2.8rem; font-weight: 800; margin: 0; letter-spacing: -0.03em; }
+        .title-sub { font-size: 1.25rem; color: var(--secondary); margin-top: 10px; font-weight: 500; }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-top: 25px; font-size: 1.6rem; }
+        .social-links a { color: var(--text); transition: all 0.3s; }
+        .social-links a:hover { color: var(--primary); transform: translateY(-3px); }
 
-        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.025em; }
-        .subtitle { font-size: 1.2rem; color: #6b7280; margin-bottom: 20px; }
-        .social-links { display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; }
-        .social-links a { color: var(--text); transition: color 0.3s; text-decoration: none; }
-        .social-links a:hover { color: var(--primary); }
+        section { margin-bottom: 60px; }
+        h2 { font-size: 1.75rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 30px; color: var(--primary); display: flex; align-items: center; gap: 12px; }
         
-        section { margin-bottom: 50px; }
-        h2 { font-size: 1.5rem; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px; margin-bottom: 25px; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-        
-        .card { background: #f9fafb; padding: 20px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #e5e7eb; }
-        .item-title { font-weight: 600; font-size: 1.1rem; color: #111827; }
-        .item-desc { color: #4b5563; font-size: 0.95rem; margin-top: 4px; }
-        
-        /* 논문 스타일 */
-        .pub-card { margin-bottom: 25px; padding-left: 15px; border-left: 4px solid #e5e7eb; transition: all 0.3s; }
-        .pub-card:hover { border-left-color: var(--primary); background: #fcfcfc; }
-        .pub-title { font-weight: 700; font-size: 1.1rem; display: block; color: #111827; text-decoration: none; margin-bottom: 5px; }
-        .pub-title:hover { color: var(--primary); text-decoration: underline; }
-        .pub-authors { font-size: 0.95rem; color: #374151; }
-        .pub-authors strong { color: var(--primary); } /* 본인 이름 강조 */
-        .pub-journal { font-size: 0.9rem; color: #6b7280; font-style: italic; margin-top: 2px; }
-        .pub-doi { font-size: 0.85rem; color: #2563eb; text-decoration: none; }
+        /* Timeline/Card Style */
+        .entry { margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 3px solid #e2e8f0; }
+        .entry:hover { border-left-color: var(--primary); }
+        .entry-title { font-weight: 700; font-size: 1.15rem; color: #0f172a; }
+        .entry-meta { font-size: 0.95rem; color: var(--secondary); margin-bottom: 5px; }
+        .entry-content { font-size: 0.95rem; color: #475569; }
 
-        .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin-right: 5px; margin-bottom: 5px; font-weight: 600; }
+        /* Publication Specific */
+        .pub-item { margin-bottom: 20px; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #f1f5f9; }
+        .pub-name { font-weight: 700; color: #0f172a; text-decoration: none; display: block; margin-bottom: 8px; }
+        .pub-name:hover { color: var(--primary); }
+        .pub-info { font-size: 0.9rem; margin-bottom: 4px; }
+        .pub-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #dbeafe; color: #1e40af; margin-left: 8px; }
+
+        .badge-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .badge { background: #f1f5f9; color: #475569; padding: 6px 14px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; }
+        
+        strong.me { color: var(--primary); text-decoration: underline; }
+
+        footer { text-align: center; padding: 40px 0; color: var(--secondary); font-size: 0.9rem; border-top: 1px solid #f1f5f9; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <!-- 실제 업로드한 파일명에 맞춰서 수정하세요 (예: profile.jpg 또는 profile.png) -->
-        <img src="profile.jpg" alt="Gyeongbeom Kim" class="profile-img" onerror="this.src='https://via.placeholder.com/160?text=Profile+Photo'">
+        <img src="profile.jpg" alt="Gyeongbeom Kim" class="profile-img" onerror="this.src='https://via.placeholder.com/180?text=GK'">
         <h1>Gyeongbeom Kim (김경범)</h1>
-        <p class="subtitle">Research Officer (8th ROND) @ Agency for Defense Development</p>
+        <p class="title-sub">Research Officer (8th ROND) @ Agency for Defense Development</p>
         <div class="social-links">
             <a href="mailto:kimkb0316@postech.ac.kr"><i class="fas fa-envelope"></i></a>
             <a href="https://scholar.google.com/citations?user=5L-ujgQAAAAJ" target="_blank"><i class="fab fa-google"></i></a>
             <a href="https://www.linkedin.com/in/gyeongbeom-kim-907345258/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/kimgb0316" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </header>
 
     <section id="about">
         <h2><i class="fas fa-user-circle"></i> About Me</h2>
-        <p>안녕하세요! <strong>국방과학연구소(ADD) 3연구원 6부</strong>에서 과학기술전문사관 8기로 복무 중인 김경범입니다. <strong>포항공과대학교 신소재공학과</strong>를 졸업하였으며, 현재 국방 기술의 최전선에서 연구를 수행하고 있습니다. 2027년 하반기부터 <strong>POSTECH NGO Lab</strong>에서 통합과정으로 심도 있는 연구를 이어갈 예정입니다.</p>
+        <p>
+            안녕하세요! <strong>국방과학연구소(ADD) 3연구원 6부</strong>에서 과학기술전문사관 8기로 복무 중인 김경범입니다. 
+            포항공과대학교 신소재공학과를 졸업하였으며, 현재 국방 기술의 최전선에서 고내열 고분자 및 복합재료 연구를 수행하고 있습니다. 
+            2027년 하반기부터 <strong>POSTECH NGO Lab</strong>에서 통합과정으로 심도 있는 연구를 이어갈 예정입니다.
+        </p>
+    </section>
+
+    <section id="experience">
+        <h2><i class="fas fa-briefcase"></i> Research Experience</h2>
+        <div class="entry">
+            <div class="entry-title">Agency for Defense Development (ADD)</div>
+            <div class="entry-meta">Researcher (8th ROND) | Jun. 2024 – Present</div>
+            <div class="entry-content">Focusing on Thermosetting Polymers and advanced materials for defense applications.</div>
+        </div>
+        <div class="entry">
+            <div class="entry-title">POSTECH NGO Lab</div>
+            <div class="entry-meta">Research Intern | Jan. 2024 – Feb. 2024</div>
+            <div class="entry-content">Studied light out-coupling and photon recycling in optoelectronic devices.</div>
+        </div>
+        <div class="entry">
+            <div class="entry-title">Samsung Semiconductor R&D Center (STIP 4th)</div>
+            <div class="entry-meta">Research Intern | Jul. 2023 – Aug. 2023</div>
+            <div class="entry-content">Advanced Analysis Technology Team. Worked on defect detection on semiconductor wafers.</div>
+        </div>
+        <div class="entry">
+            <div class="entry-title">POSTECH Nano Photonics & Optoelectronics Lab</div>
+            <div class="entry-meta">Research Student | 2020 – 2023 (Intermittent)</div>
+            <div class="entry-content">Synthesis of Co-based electrocatalysts for HER; trained in Photolithography & PVD.</div>
+        </div>
     </section>
 
     <section id="publications">
-        <h2><i class="fas fa-book"></i> Selected Publications</h2>
-        
-        <div class="pub-card">
-            <a href="https://doi.org/10.1016/j.compositesb.2026.113637" class="pub-title" target="_blank">
-                Enhanced Thermal Stability and Char Formation in Nitrile-Modified Benzoxazines: From Molecular Design to Flame-Resistant Composites
+        <h2><i class="fas fa-file-alt"></i> Publications</h2>
+        <div class="pub-item">
+            <a href="https://doi.org/10.1016/j.compositesb.2026.113637" class="pub-name" target="_blank">
+                Enhanced thermal stability and char formation in nitrile-modified benzoxazines: From molecular design to flame-resistant composites
             </a>
-            <div class="pub-authors"><strong>G Kim</strong>, JS Won, S Baek, MY Lee, Y Cho</div>
-            <div class="pub-journal">Composites Part B: Engineering, 113637, 2026</div>
-            <a href="https://doi.org/10.1016/j.compositesb.2026.113637" class="pub-doi" target="_blank">DOI: 10.1016/j.compositesb.2026.113637</a>
+            <div class="pub-info"><strong>Gyeongbeom Kim¹</strong>, Jong Sung Won¹, Seungyu Baek, Man Young Lee, Yongyoon Cho*</div>
+            <div class="pub-info"><em>Composites Part B: Engineering</em>, 2026 <span class="pub-tag">IF 14.2</span></div>
         </div>
-
-        <div class="pub-card">
-            <a href="https://doi.org/10.1016/j.compositesb.2026.113906" class="pub-title" target="_blank">
-                Progress and Prospects of Kevlar-Epoxy Composites: The Next Generation Materials for Bulletproof and Body Armor Applications
+        <div class="pub-item">
+            <a href="https://doi.org/10.1016/j.mlblux.2026.100267" class="pub-name" target="_blank">
+                Position Effects of Nitrile Groups on the Thermal and Oxidative Stability of Benzoxazines for Defense Applications
             </a>
-            <div class="pub-authors"><strong>G Kim</strong>, YY Cho, MY Lee, C Prasad, VS Munagapati, JC Wen, HY Choi, ...</div>
-            <div class="pub-journal">Composites Part B: Engineering, 113906, 2026</div>
-            <a href="https://doi.org/10.1016/j.compositesb.2026.113906" class="pub-doi" target="_blank">DOI: 10.1016/j.compositesb.2026.113906</a>
-        </div>
-
-        <div class="pub-card">
-            <a href="https://doi.org/10.1016/j.mlblux.2026.100267" class="pub-title" target="_blank">
-                Position effects of nitrile groups on the thermal and oxidative stability of benzoxazines for defense applications
-            </a>
-            <div class="pub-authors"><strong>G Kim</strong>, E Lee, MY Lee, JS Won</div>
-            <div class="pub-journal">Materials Letters: X, 100267, 2026</div>
-            <a href="https://doi.org/10.1016/j.mlblux.2026.100267" class="pub-doi" target="_blank">DOI: 10.1016/j.mlblux.2026.100267</a>
+            <div class="pub-info"><strong>Gyeongbeom Kim</strong>, Eunhye Lee, Man Young Lee, Jong Sung Won*</div>
+            <div class="pub-info"><em>Materials Letters: X</em>, 2026 <span class="pub-tag">IF 2.6</span></div>
         </div>
     </section>
 
-    <section id="interests">
-        <h2><i class="fas fa-microscope"></i> Research Interests</h2>
-        <div>
-            <span class="badge">Nitrile-Modified Benzoxazines</span>
-            <span class="badge">Flame-Resistant Composites</span>
-            <span class="badge">Kevlar-Epoxy Composites</span>
-            <span class="badge">Defense Applications</span>
-            <span class="badge">Si-photonics & OLED</span>
+    <section id="patents">
+        <h2><i class="fas fa-certificate"></i> Patents</h2>
+        <div class="entry">
+            <div class="entry-title">전자빔 경화를 통한 고내열 에폭시/우레탄-벤족사진 블렌드 제조 방법</div>
+            <div class="entry-meta">KR-Application No. 10-2026-0013214 (특허등록)</div>
+        </div>
+        <div class="entry">
+            <div class="entry-title">우주환경 및 재진입용 구조 변성 벤조옥사진 수지의 제조방법</div>
+            <div class="entry-meta">KR-Application No. 10-2025-0172405 (특허등록)</div>
         </div>
     </section>
 
-    <section id="education">
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-        <div class="card">
-            <div class="item-title">POSTECH (Pohang University of Science and Technology)</div>
-            <div class="item-desc">B.S. in Materials Science and Engineering | 2020.02 - 2024.02</div>
+    <section id="conferences">
+        <h2><i class="fas fa-users"></i> Conferences</h2>
+        <div class="entry">
+            <div class="entry-title">ACS Fall 2026 (Chicago, USA)</div>
+            <div class="entry-content">"Triazine-Stabilized Benzoxazine Thermosets with Rapid Char Formation under Extreme Thermal Flux" (Poster)</div>
         </div>
-        <div class="card">
-            <div class="item-title">Chungnam Science High School (CNSH 24th)</div>
-            <div class="item-desc">2017.03 - 2019.12</div>
+        <div class="entry">
+            <div class="entry-title">2026 한국복합재료학회 춘계학술대회</div>
+            <div class="entry-content">"벤조옥사진 기반 복합재 토치 내열 특성 및 에폭시 블렌딩을 통한 공정 적용성 연구" (Oral)</div>
+        </div>
+        <div class="entry">
+            <div class="entry-title">2025 한국복합재료학회 추계학술대회</div>
+            <div class="entry-content">"Development and Applications of Next-Generation Benzoxazines for Extreme Space Environments" (Oral)</div>
         </div>
     </section>
 
-    <footer style="text-align: center; color: #9ca3af; font-size: 0.8rem; margin-top: 80px; padding-bottom: 20px;">
-        &copy; 2024 Gyeongbeom Kim. All rights reserved.
+    <section id="awards">
+        <h2><i class="fas fa-trophy"></i> Awards & Honors</h2>
+        <div class="badge-container">
+            <span class="badge">복합재료 우수논문상 (한국복합재료학회, 2025)</span>
+            <span class="badge">장교임관 교육훈련 우수상 (육군학생군사학교, 2024)</span>
+            <span class="badge">Great Honor - PROUD POSTECHIAN (POSTECH, 2024)</span>
+            <span class="badge">SK머터리얼즈 첨단소재 인재육성 장학생 (2023)</span>
+            <span class="badge">TWTS 2기 장학생 (한국고등교육재단, 2023)</span>
+            <span class="badge">기술보국장학생 (운해장학재단, 2023)</span>
+            <span class="badge">국가우수장학생 - 과학기술전문사관 (2022-2023)</span>
+            <span class="badge">성적최우수/우수 장학생 (POSTECH 신소재, 3회)</span>
+        </div>
+    </section>
+
+    <section id="activities">
+        <h2><i class="fas fa-star"></i> Activities</h2>
+        <div class="entry">
+            <div class="entry-title">과학기술전문사관 8기 자치회 기장</div>
+            <div class="entry-meta">Feb. 2022 – Present</div>
+        </div>
+        <div class="entry">
+            <div class="entry-title">POSTECH Student Advisor (SA) 회장</div>
+            <div class="entry-meta">2022</div>
+        </div>
+        <div class="entry">
+            <div class="entry-title">POSTECH 방송국 PBS 아나운서</div>
+            <div class="entry-meta">2020 – 2022</div>
+        </div>
+        <div class="entry">
+            <div class="entry-title">Global Outreach & 파견</div>
+            <div class="entry-content">CES 2023 라스베이거스 파견, HKU(홍콩대) 해외대학탐방 장학생 (2023)</div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2><i class="fas fa-tools"></i> Skills</h2>
+        <div class="badge-container">
+            <span class="badge">OPIC: Intermediate High (IH)</span>
+            <span class="badge">Thermosetting Resins</span>
+            <span class="badge">Composites Analysis</span>
+            <span class="badge">Si-photonics</span>
+            <span class="badge">OLED Out-coupling</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Gyeongbeom Kim. Built with HTML/CSS. Last updated: Oct 2024</p>
     </footer>
 </div>
 
