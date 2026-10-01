@@ -12,12 +12,13 @@
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
         header { text-align: center; margin-bottom: 50px; }
         
-        /* 사진 스타일 */
+        /* 사진 스타일 - 깨짐 방지를 위해 alt 텍스트 스타일 추가 */
         .profile-img { 
             width: 160px; height: 160px; 
             border-radius: 50%; object-fit: cover; 
             margin-bottom: 20px; border: 4px solid #f3f4f6;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background-color: #f3f4f6; /* 사진 안 나올 때 배경색 */
         }
 
         h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.025em; }
@@ -34,12 +35,14 @@
         .item-desc { color: #4b5563; font-size: 0.95rem; margin-top: 4px; }
         
         /* 논문 스타일 */
-        .pub-card { margin-bottom: 20px; padding-left: 15px; border-left: 4px solid #e5e7eb; transition: border-color 0.3s; }
-        .pub-card:hover { border-left-color: var(--primary); }
-        .pub-title { font-weight: 600; font-size: 1.05rem; display: block; color: #111827; text-decoration: none; }
-        .pub-title:hover { color: var(--primary); }
-        .pub-authors { font-size: 0.9rem; color: #4b5563; }
-        .pub-journal { font-size: 0.9rem; color: #6b7280; font-style: italic; }
+        .pub-card { margin-bottom: 25px; padding-left: 15px; border-left: 4px solid #e5e7eb; transition: all 0.3s; }
+        .pub-card:hover { border-left-color: var(--primary); background: #fcfcfc; }
+        .pub-title { font-weight: 700; font-size: 1.1rem; display: block; color: #111827; text-decoration: none; margin-bottom: 5px; }
+        .pub-title:hover { color: var(--primary); text-decoration: underline; }
+        .pub-authors { font-size: 0.95rem; color: #374151; }
+        .pub-authors strong { color: var(--primary); } /* 본인 이름 강조 */
+        .pub-journal { font-size: 0.9rem; color: #6b7280; font-style: italic; margin-top: 2px; }
+        .pub-doi { font-size: 0.85rem; color: #2563eb; text-decoration: none; }
 
         .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin-right: 5px; margin-bottom: 5px; font-weight: 600; }
     </style>
@@ -48,8 +51,8 @@
 
 <div class="container">
     <header>
-        <!-- 업로드한 profile.jpg를 불러옵니다 -->
-        <img src="profile.jpg" alt="Gyeongbeom Kim" class="profile-img">
+        <!-- 실제 업로드한 파일명에 맞춰서 수정하세요 (예: profile.jpg 또는 profile.png) -->
+        <img src="profile.jpg" alt="Gyeongbeom Kim" class="profile-img" onerror="this.src='https://via.placeholder.com/160?text=Profile+Photo'">
         <h1>Gyeongbeom Kim (김경범)</h1>
         <p class="subtitle">Research Officer (8th ROND) @ Agency for Defense Development</p>
         <div class="social-links">
@@ -62,34 +65,48 @@
 
     <section id="about">
         <h2><i class="fas fa-user-circle"></i> About Me</h2>
-        <p>안녕하세요! <strong>국방과학연구소(ADD)</strong>에서 과학기술전문사관 8기로 복무 중인 김경범입니다. <strong>포항공과대학교 신소재공학과</strong>를 졸업하였으며, 현재 국방 기술의 최전선에서 연구를 수행하고 있습니다. 2027년 하반기부터 <strong>POSTECH NGO Lab</strong>에서 통합과정으로 심도 있는 연구를 이어갈 예정입니다.</p>
+        <p>안녕하세요! <strong>국방과학연구소(ADD) 3연구원 6부</strong>에서 과학기술전문사관 8기로 복무 중인 김경범입니다. <strong>포항공과대학교 신소재공학과</strong>를 졸업하였으며, 현재 국방 기술의 최전선에서 연구를 수행하고 있습니다. 2027년 하반기부터 <strong>POSTECH NGO Lab</strong>에서 통합과정으로 심도 있는 연구를 이어갈 예정입니다.</p>
     </section>
 
-    <!-- 논문 섹션 추가 -->
     <section id="publications">
         <h2><i class="fas fa-book"></i> Selected Publications</h2>
         
         <div class="pub-card">
-            <a href="https://scholar.google.com/citations?view_op=view_citation&citation_for_view=5L-ujgQAAAAJ:u-x6o8ySG0sC" class="pub-title" target="_blank">
-                Stable and highly efficient red organic light-emitting diodes based on a new thermally activated delayed fluorescence emitter
+            <a href="https://doi.org/10.1016/j.compositesb.2026.113637" class="pub-title" target="_blank">
+                Enhanced Thermal Stability and Char Formation in Nitrile-Modified Benzoxazines: From Molecular Design to Flame-Resistant Composites
             </a>
-            <div class="pub-authors">G Kim, et al.</div>
-            <div class="pub-journal">Journal of Materials Chemistry C, 2023</div>
+            <div class="pub-authors"><strong>G Kim</strong>, JS Won, S Baek, MY Lee, Y Cho</div>
+            <div class="pub-journal">Composites Part B: Engineering, 113637, 2026</div>
+            <a href="https://doi.org/10.1016/j.compositesb.2026.113637" class="pub-doi" target="_blank">DOI: 10.1016/j.compositesb.2026.113637</a>
         </div>
 
         <div class="pub-card">
-            <a href="#" class="pub-title">더 많은 논문은 Google Scholar 링크를 확인해주세요.</a>
-            <div class="pub-journal"><a href="https://scholar.google.com/citations?user=5L-ujgQAAAAJ" target="_blank">View all on Google Scholar</a></div>
+            <a href="https://doi.org/10.1016/j.compositesb.2026.113906" class="pub-title" target="_blank">
+                Progress and Prospects of Kevlar-Epoxy Composites: The Next Generation Materials for Bulletproof and Body Armor Applications
+            </a>
+            <div class="pub-authors"><strong>G Kim</strong>, YY Cho, MY Lee, C Prasad, VS Munagapati, JC Wen, HY Choi, ...</div>
+            <div class="pub-journal">Composites Part B: Engineering, 113906, 2026</div>
+            <a href="https://doi.org/10.1016/j.compositesb.2026.113906" class="pub-doi" target="_blank">DOI: 10.1016/j.compositesb.2026.113906</a>
+        </div>
+
+        <div class="pub-card">
+            <a href="https://doi.org/10.1016/j.mlblux.2026.100267" class="pub-title" target="_blank">
+                Position effects of nitrile groups on the thermal and oxidative stability of benzoxazines for defense applications
+            </a>
+            <div class="pub-authors"><strong>G Kim</strong>, E Lee, MY Lee, JS Won</div>
+            <div class="pub-journal">Materials Letters: X, 100267, 2026</div>
+            <a href="https://doi.org/10.1016/j.mlblux.2026.100267" class="pub-doi" target="_blank">DOI: 10.1016/j.mlblux.2026.100267</a>
         </div>
     </section>
 
     <section id="interests">
         <h2><i class="fas fa-microscope"></i> Research Interests</h2>
         <div>
-            <span class="badge">Si-photonics</span>
-            <span class="badge">OLED</span>
-            <span class="badge">Semiconductor Materials</span>
-            <span class="badge">Optoelectronics</span>
+            <span class="badge">Nitrile-Modified Benzoxazines</span>
+            <span class="badge">Flame-Resistant Composites</span>
+            <span class="badge">Kevlar-Epoxy Composites</span>
+            <span class="badge">Defense Applications</span>
+            <span class="badge">Si-photonics & OLED</span>
         </div>
     </section>
 
@@ -106,7 +123,7 @@
     </section>
 
     <footer style="text-align: center; color: #9ca3af; font-size: 0.8rem; margin-top: 80px; padding-bottom: 20px;">
-        &copy; 2024 Gyeongbeom Kim. Updated with love.
+        &copy; 2024 Gyeongbeom Kim. All rights reserved.
     </footer>
 </div>
 
