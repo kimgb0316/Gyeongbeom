@@ -11,16 +11,36 @@
         body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
         header { text-align: center; margin-bottom: 50px; }
-        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        
+        /* 사진 스타일 */
+        .profile-img { 
+            width: 160px; height: 160px; 
+            border-radius: 50%; object-fit: cover; 
+            margin-bottom: 20px; border: 4px solid #f3f4f6;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.025em; }
         .subtitle { font-size: 1.2rem; color: #6b7280; margin-bottom: 20px; }
         .social-links { display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; }
         .social-links a { color: var(--text); transition: color 0.3s; text-decoration: none; }
         .social-links a:hover { color: var(--primary); }
-        section { margin-bottom: 40px; }
-        h2 { font-size: 1.5rem; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px; margin-bottom: 20px; color: var(--primary); }
+        
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.5rem; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px; margin-bottom: 25px; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        
         .card { background: #f9fafb; padding: 20px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #e5e7eb; }
-        .item-title { font-weight: 600; font-size: 1.1rem; }
-        .item-desc { color: #4b5563; font-size: 0.95rem; }
+        .item-title { font-weight: 600; font-size: 1.1rem; color: #111827; }
+        .item-desc { color: #4b5563; font-size: 0.95rem; margin-top: 4px; }
+        
+        /* 논문 스타일 */
+        .pub-card { margin-bottom: 20px; padding-left: 15px; border-left: 4px solid #e5e7eb; transition: border-color 0.3s; }
+        .pub-card:hover { border-left-color: var(--primary); }
+        .pub-title { font-weight: 600; font-size: 1.05rem; display: block; color: #111827; text-decoration: none; }
+        .pub-title:hover { color: var(--primary); }
+        .pub-authors { font-size: 0.9rem; color: #4b5563; }
+        .pub-journal { font-size: 0.9rem; color: #6b7280; font-style: italic; }
+
         .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin-right: 5px; margin-bottom: 5px; font-weight: 600; }
     </style>
 </head>
@@ -28,6 +48,8 @@
 
 <div class="container">
     <header>
+        <!-- 업로드한 profile.jpg를 불러옵니다 -->
+        <img src="profile.jpg" alt="Gyeongbeom Kim" class="profile-img">
         <h1>Gyeongbeom Kim (김경범)</h1>
         <p class="subtitle">Research Officer (8th ROND) @ Agency for Defense Development</p>
         <div class="social-links">
@@ -43,11 +65,29 @@
         <p>안녕하세요! <strong>국방과학연구소(ADD)</strong>에서 과학기술전문사관 8기로 복무 중인 김경범입니다. <strong>포항공과대학교 신소재공학과</strong>를 졸업하였으며, 현재 국방 기술의 최전선에서 연구를 수행하고 있습니다. 2027년 하반기부터 <strong>POSTECH NGO Lab</strong>에서 통합과정으로 심도 있는 연구를 이어갈 예정입니다.</p>
     </section>
 
+    <!-- 논문 섹션 추가 -->
+    <section id="publications">
+        <h2><i class="fas fa-book"></i> Selected Publications</h2>
+        
+        <div class="pub-card">
+            <a href="https://scholar.google.com/citations?view_op=view_citation&citation_for_view=5L-ujgQAAAAJ:u-x6o8ySG0sC" class="pub-title" target="_blank">
+                Stable and highly efficient red organic light-emitting diodes based on a new thermally activated delayed fluorescence emitter
+            </a>
+            <div class="pub-authors">G Kim, et al.</div>
+            <div class="pub-journal">Journal of Materials Chemistry C, 2023</div>
+        </div>
+
+        <div class="pub-card">
+            <a href="#" class="pub-title">더 많은 논문은 Google Scholar 링크를 확인해주세요.</a>
+            <div class="pub-journal"><a href="https://scholar.google.com/citations?user=5L-ujgQAAAAJ" target="_blank">View all on Google Scholar</a></div>
+        </div>
+    </section>
+
     <section id="interests">
         <h2><i class="fas fa-microscope"></i> Research Interests</h2>
         <div>
             <span class="badge">Si-photonics</span>
-            <span class="badge">OLED (Organic Light-Emitting Diodes)</span>
+            <span class="badge">OLED</span>
             <span class="badge">Semiconductor Materials</span>
             <span class="badge">Optoelectronics</span>
         </div>
@@ -65,14 +105,8 @@
         </div>
     </section>
 
-    <section id="contact">
-        <h2><i class="fas fa-paper-plane"></i> Contact</h2>
-        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> kimkb0316@postech.ac.kr</p>
-        <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +8210-3434-6992</p>
-    </section>
-
-    <footer style="text-align: center; color: #9ca3af; font-size: 0.8rem; margin-top: 80px;">
-        &copy; 2024 Gyeongbeom Kim. All rights reserved.
+    <footer style="text-align: center; color: #9ca3af; font-size: 0.8rem; margin-top: 80px; padding-bottom: 20px;">
+        &copy; 2024 Gyeongbeom Kim. Updated with love.
     </footer>
 </div>
 
